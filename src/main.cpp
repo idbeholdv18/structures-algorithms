@@ -1,7 +1,8 @@
 #include <iostream>
-// #include "sort/bubble_sort.hpp"
-// #include "sort/shaker_sort.hpp"
+#include "sort/bubble_sort.hpp"
+#include "sort/shaker_sort.hpp"
 #include "sort/insertion_sort.hpp"
+#include "sort/selection_sort.hpp"
 #include "sort/shared/print.hpp"
 
 using namespace std;
@@ -10,17 +11,31 @@ int main()
 {
     const int ARR_LENGTH = 10;
     int numbers[ARR_LENGTH]{8, 6, 1, 9, 3, 0, 4, 5, 2, 7};
+    print(numbers, ARR_LENGTH);
 
     // bubble sort
-    // int * sorted = bubble_sort(numbers, ARR_LENGTH);
+    int *bubble_sorted = bubble_sort(numbers, ARR_LENGTH);
+    cout << "bubble sort: ";
+    print(bubble_sorted, ARR_LENGTH);
+    delete[] bubble_sorted;
 
     // shaker sort
-    // int *sorted = shaker_sort(numbers, ARR_LENGTH);
+    int *shaker_sorted = shaker_sort(numbers, ARR_LENGTH);
+    cout << "shaker sort: ";
+    print(shaker_sorted, ARR_LENGTH);
+    delete[] shaker_sorted;
 
-    int * sorted = insertion_sort(numbers, ARR_LENGTH);
-    print(numbers, ARR_LENGTH);
-    print(sorted, ARR_LENGTH);
+    // insertion sort
+    int *insertion_sorted = insertion_sort(numbers, ARR_LENGTH);
+    cout << "insertion sort: ";
+    print(insertion_sorted, ARR_LENGTH);
+    delete[] insertion_sorted;
 
-    delete[] sorted;
+    // selection sort
+    int *selection_sorted = selection_sort(numbers, ARR_LENGTH);
+    cout << "selection sort: ";
+    print(selection_sorted, ARR_LENGTH);
+    delete[] selection_sorted;
+
     return 0;
 }
