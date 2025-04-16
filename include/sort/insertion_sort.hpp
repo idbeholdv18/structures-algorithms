@@ -1,3 +1,5 @@
+#pragma once
+
 template <typename T>
 T *insertion_sort(T *original, int length)
 {

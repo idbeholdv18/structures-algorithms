@@ -1,3 +1,5 @@
+#pragma once
+
 #include "sort/shared/swap.hpp"
 
 template <typename T>
