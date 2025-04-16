@@ -3,6 +3,7 @@
 #include "sort/shaker_sort.hpp"
 #include "sort/insertion_sort.hpp"
 #include "sort/selection_sort.hpp"
+#include "sort/quick_sort.hpp"
 #include "sort/shared/print.hpp"
 
 using namespace std;
@@ -36,6 +37,12 @@ int main()
     cout << "selection sort: ";
     print(selection_sorted, ARR_LENGTH);
     delete[] selection_sorted;
+
+    // quick sort
+    int *quick_sorted = quick_sort(numbers, ARR_LENGTH);
+    cout << "quick sort: ";
+    print(quick_sorted, ARR_LENGTH);
+    delete[] quick_sorted;
 
     return 0;
 }
