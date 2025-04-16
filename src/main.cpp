@@ -1,6 +1,7 @@
 #include <iostream>
 // #include "sort/bubble_sort.hpp"
-#include "sort/shaker_sort.hpp"
+// #include "sort/shaker_sort.hpp"
+#include "sort/insertion_sort.hpp"
 #include "sort/shared/print.hpp"
 
 using namespace std;
@@ -13,8 +14,10 @@ int main()
     // bubble sort
     // int * sorted = bubble_sort(numbers, ARR_LENGTH);
 
-    int *sorted = shaker_sort(numbers, ARR_LENGTH);
+    // shaker sort
+    // int *sorted = shaker_sort(numbers, ARR_LENGTH);
 
+    int * sorted = insertion_sort(numbers, ARR_LENGTH);
     print(numbers, ARR_LENGTH);
     print(sorted, ARR_LENGTH);
 
