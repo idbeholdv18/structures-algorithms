@@ -4,6 +4,7 @@
 #include "sort/insertion_sort.hpp"
 #include "sort/selection_sort.hpp"
 #include "sort/quick_sort.hpp"
+#include "sort/merge_sort.hpp"
 #include "sort/shared/print.hpp"
 
 using namespace std;
@@ -43,6 +44,12 @@ int main()
     cout << "quick sort: ";
     print(quick_sorted, ARR_LENGTH);
     delete[] quick_sorted;
+
+    // quick sort
+    int *merge_sorted = merge_sort(numbers, ARR_LENGTH);
+    cout << "merge sort: ";
+    print(merge_sorted, ARR_LENGTH);
+    delete[] merge_sorted;
 
     return 0;
 }
