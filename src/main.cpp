@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "sort/bubble_sort.hpp"
 #include "sort/shaker_sort.hpp"
 #include "sort/insertion_sort.hpp"
@@ -6,6 +7,7 @@
 #include "sort/quick_sort.hpp"
 #include "sort/merge_sort.hpp"
 #include "sort/shared/print.hpp"
+#include "linked_list/linked_list.hpp"
 
 using namespace std;
 
@@ -50,6 +52,39 @@ int main()
     cout << "merge sort: ";
     print(merge_sorted, ARR_LENGTH);
     delete[] merge_sorted;
+
+    // linked list
+    auto list = std::make_unique<linked_list::LinkedList<int>>();
+    list
+        ->push(1)
+        .push(2)
+        .push(3)
+        .push(4)
+        .push(5)
+        .pop();
+
+    cout << "All nodes: ";
+    list->forEach([](const int &value)
+                  { cout << value << " "; });
+    cout << "\n";
+
+    list->forEach([](int &value)
+                  { value *= 2; });
+
+    cout << "Multiplied: ";
+    list->forEach([](const int &value)
+                  { cout << value << " "; });
+    cout << "\n";
+
+    auto string_list = list->map<string>([](const int& v) {
+        return string("val#") + to_string(v);
+    });
+    
+    cout << "new string list: ";
+    string_list.forEach([](const string& s){
+        cout << s << " ";
+    });
+    cout << "\n";
 
     return 0;
 }
