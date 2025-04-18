@@ -62,6 +62,8 @@ int main()
         .push(4)
         .push(5)
         .unshift(0)
+        .unshift(9)
+        .shift()
         .pop();
 
     cout << "All nodes: ";

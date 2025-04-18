@@ -11,7 +11,7 @@ namespace linked_list
         virtual ILinkedList<T>& push(T data) = 0;
         virtual ILinkedList<T>& pop() = 0;
         virtual ILinkedList<T>& unshift(T data) = 0;
-        // virtual ILinkedList<T>& shift() = 0;
+        virtual ILinkedList<T>& shift() = 0;
         virtual ILinkedList<T>& clear() = 0;
 
         virtual ILinkedList<T>& forEach(const std::function<void(T&)>& func) = 0;

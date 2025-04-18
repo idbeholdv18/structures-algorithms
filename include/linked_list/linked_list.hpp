@@ -59,8 +59,6 @@ namespace linked_list
             _length--;
             return *this;
         };
-        // ILinkedList<T> &unshift(T data) override;
-        // ILinkedList<T> &shift() override;
         ILinkedList<T> &forEach(const std::function<void(T &)> &func) override
         {
             Node<T> *current = _head;
@@ -112,13 +110,38 @@ namespace linked_list
             if (!_head)
             {
                 _head = _tail = newNode;
-            } else {
+            }
+            else
+            {
                 _head->prev = newNode;
                 newNode->next = _head;
                 _head = newNode;
             }
 
             _length++;
+            return *this;
+        }
+
+        ILinkedList<T> &shift() override
+        {
+            if (!_head) {
+                return *this;
+            }
+            
+            if (_head == _tail) {
+                delete _head;
+                _head = _tail = nullptr;
+            } else {
+                Node<T> * newHead = _head->next;
+                newHead->prev = nullptr;
+                delete _head;
+                _head = newHead;
+            }
+        
+            if (_length > 0) {
+                _length--;
+            }
+        
             return *this;
         }
     };
