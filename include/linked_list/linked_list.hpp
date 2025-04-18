@@ -105,5 +105,21 @@ namespace linked_list
             _length = 0;
             return *this;
         };
+
+        ILinkedList<T> &unshift(T value) override
+        {
+            Node<T> *newNode = new Node(value);
+            if (!_head)
+            {
+                _head = _tail = newNode;
+            } else {
+                _head->prev = newNode;
+                newNode->next = _head;
+                _head = newNode;
+            }
+
+            _length++;
+            return *this;
+        }
     };
 }
