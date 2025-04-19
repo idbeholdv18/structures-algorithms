@@ -103,6 +103,9 @@ int main()
     std::cout << "Postorder: ";
     tree.dsfPostorder();
 
+    std::cout << "BFS: ";
+    tree.bfs();
+
     std::ofstream file("tree.dot");
     tree.exportToDot(file);
     file.close();

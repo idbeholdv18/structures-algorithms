@@ -4,6 +4,7 @@
 #include "binary_tree/binary_tree.interface.hpp"
 #include <functional>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -111,6 +112,24 @@ namespace binary_tree
 
         void dsfPostorder() override {
             _postorderTraversal(_root);
+            cout << endl;
+        }
+
+        void bfs() override {
+            if (!_root) return;
+
+            queue<Node<T>*> q;
+            q.push(_root);
+
+            while (!q.empty()) {
+                Node<T> * current = q.front();
+                q.pop();
+                cout << current->m_data << " ";
+
+                if (current->left) q.push(current->left);
+                if (current->right) q.push(current->right);
+            }
+
             cout << endl;
         }
 
