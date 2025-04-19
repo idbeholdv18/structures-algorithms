@@ -11,7 +11,6 @@
 #include "binary_tree/binary_tree.hpp"
 #include <fstream>
 
-
 using namespace std;
 
 int main()
@@ -82,21 +81,24 @@ int main()
                   { cout << value << " "; });
     cout << "\n";
 
-    auto string_list = list->map<string>([](const int& v) {
-        return string("val#") + to_string(v);
-    });
-    
-    cout << "new string list: ";
-    string_list.forEach([](const string& s){
-        cout << s << " ";
-    });
-    cout << "\n";
+    auto string_list = list->map<string>([](const int &v)
+                                         { return string("val#") + to_string(v); });
 
+    cout << "new string list: ";
+    string_list.forEach([](const string &s)
+                        { cout << s << " "; });
+    cout << "\n";
 
     // binary tree
 
     binary_tree::Tree<int> tree;
     tree.add(8).add(6).add(1).add(9).add(3).add(0).add(4).add(5).add(2).add(7);
+
+    std::cout << "Preorder: ";
+    tree.dsfPreorder();
+
+    std::cout << "Inorder: ";
+    tree.dsfInorder();
 
     std::ofstream file("tree.dot");
     tree.exportToDot(file);

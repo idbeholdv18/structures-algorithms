@@ -5,6 +5,8 @@
 #include <functional>
 #include <iostream>
 
+using namespace std;
+
 namespace binary_tree
 {
     template <typename T>
@@ -31,9 +33,16 @@ namespace binary_tree
         {
             if (!node)
                 return;
-            std::cout << node->m_data << " ";
+            cout << node->m_data << " ";
             _preorderTraversal(node->left);
             _preorderTraversal(node->right);
+        }
+
+        void _inorderTraversal(Node<T> *node) {
+            if (!node) return;
+            _inorderTraversal(node->left);
+            cout << node->m_data << " ";
+            _inorderTraversal(node->right);
         }
 
         void _clearRecursive(Node<T> *&node)
@@ -85,10 +94,15 @@ namespace binary_tree
         void dsfPreorder() override
         {
             _preorderTraversal(_root);
-            std::cout << std::endl;
+            cout << endl;
         }
 
-        void exportToDot(std::ostream& out) override {
+        void dsfInorder() override {
+            _inorderTraversal(_root);
+            cout << endl;
+        }
+
+        void exportToDot(ostream& out) override {
             out << "digraph BinaryTree {\n";
             _exportDotRecursive(_root, out);
             out << "}\n";
