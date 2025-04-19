@@ -8,6 +8,9 @@
 #include "sort/merge_sort.hpp"
 #include "sort/shared/print.hpp"
 #include "linked_list/linked_list.hpp"
+#include "binary_tree/binary_tree.hpp"
+#include <fstream>
+
 
 using namespace std;
 
@@ -89,5 +92,16 @@ int main()
     });
     cout << "\n";
 
+
+    // binary tree
+
+    binary_tree::Tree<int> tree;
+    tree.add(8).add(6).add(1).add(9).add(3).add(0).add(4).add(5).add(2).add(7);
+
+    std::ofstream file("tree.dot");
+    tree.exportToDot(file);
+    file.close();
+
+    std::cout << "DOT файл сохранён: tree.dot\nCheck out: https://dreampuf.github.io/GraphvizOnline/";
     return 0;
 }
