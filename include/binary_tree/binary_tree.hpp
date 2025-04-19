@@ -44,6 +44,13 @@ namespace binary_tree
             cout << node->m_data << " ";
             _inorderTraversal(node->right);
         }
+        
+        void _postorderTraversal(Node<T> *node) {
+            if (!node) return;
+            _postorderTraversal(node->left);
+            _postorderTraversal(node->right);
+            cout << node->m_data << " ";
+        }
 
         void _clearRecursive(Node<T> *&node)
         {
@@ -99,6 +106,11 @@ namespace binary_tree
 
         void dsfInorder() override {
             _inorderTraversal(_root);
+            cout << endl;
+        }
+
+        void dsfPostorder() override {
+            _postorderTraversal(_root);
             cout << endl;
         }
 

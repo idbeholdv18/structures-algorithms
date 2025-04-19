@@ -100,6 +100,9 @@ int main()
     std::cout << "Inorder: ";
     tree.dsfInorder();
 
+    std::cout << "Postorder: ";
+    tree.dsfPostorder();
+
     std::ofstream file("tree.dot");
     tree.exportToDot(file);
     file.close();
