@@ -7,6 +7,10 @@
 #include "sort/quick_sort.hpp"
 #include "sort/merge_sort.hpp"
 #include "sort/shared/print.hpp"
+#include "search/linear_search.hpp"
+#include "search/binary_search.hpp"
+#include "search/jump_search.hpp"
+#include "search/exponential_search.hpp"
 #include "linked_list/linked_list.hpp"
 #include "binary_tree/binary_tree.hpp"
 #include <fstream>
@@ -23,7 +27,6 @@ int main()
     int *bubble_sorted = bubble_sort(numbers, ARR_LENGTH);
     cout << "bubble sort: ";
     print(bubble_sorted, ARR_LENGTH);
-    delete[] bubble_sorted;
 
     // shaker sort
     int *shaker_sorted = shaker_sort(numbers, ARR_LENGTH);
@@ -54,6 +57,26 @@ int main()
     cout << "merge sort: ";
     print(merge_sorted, ARR_LENGTH);
     delete[] merge_sorted;
+
+    const int TARGET = 7;
+
+    cout << "linear search for " << TARGET << ": ";
+    int linearSearchFound = linear_search(numbers, ARR_LENGTH, TARGET);
+    cout << numbers[linearSearchFound] << " (index: " << linearSearchFound << ")" << endl;
+
+    cout << "binary search for " << TARGET << ": ";
+    int binarySearchFound = binary_search(bubble_sorted, ARR_LENGTH, TARGET);
+    cout << bubble_sorted[binarySearchFound] << " (index: " << binarySearchFound << ")" << endl;
+
+    cout << "jump search for " << TARGET << ": ";
+    int jumpSearchFound = jump_search(bubble_sorted, ARR_LENGTH, TARGET);
+    cout << bubble_sorted[jumpSearchFound] << " (index: " << jumpSearchFound << ")" << endl;
+
+    cout << "exponential search for " << TARGET << ": ";
+    int exponentialSearchFound = exponential_search(bubble_sorted, ARR_LENGTH, TARGET);
+    cout << bubble_sorted[exponentialSearchFound] << " (index: " << exponentialSearchFound << ")" << endl;
+
+    delete[] bubble_sorted;
 
     // linked list
     auto list = std::make_unique<linked_list::LinkedList<int>>();
