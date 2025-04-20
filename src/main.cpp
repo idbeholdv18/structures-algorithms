@@ -129,6 +129,17 @@ int main()
     std::cout << "BFS: ";
     tree.bfs();
 
+    int treeSearchTarget = 5;
+    auto found = tree.search(treeSearchTarget);
+    if (found)
+    {
+        std::cout << "Found: " << found->m_data << "\n";
+    }
+    else
+    {
+        std::cout << "Value: " << treeSearchTarget << "not found.\n";
+    }
+
     std::ofstream file("tree.dot");
     tree.exportToDot(file);
     file.close();

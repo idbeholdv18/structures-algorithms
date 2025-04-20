@@ -17,14 +17,18 @@ namespace binary_tree
         Node<T> *_root;
         std::less<T> _compare;
 
-        void _exportDotRecursive(Node<T>* node, std::ostream& out) {
-            if (!node) return;
-        
-            if (node->left) {
+        void _exportDotRecursive(Node<T> *node, std::ostream &out)
+        {
+            if (!node)
+                return;
+
+            if (node->left)
+            {
                 out << "    \"" << node->m_data << "\" -> \"" << node->left->m_data << "\";\n";
                 _exportDotRecursive(node->left, out);
             }
-            if (node->right) {
+            if (node->right)
+            {
                 out << "    \"" << node->m_data << "\" -> \"" << node->right->m_data << "\";\n";
                 _exportDotRecursive(node->right, out);
             }
@@ -39,15 +43,19 @@ namespace binary_tree
             _preorderTraversal(node->right);
         }
 
-        void _inorderTraversal(Node<T> *node) {
-            if (!node) return;
+        void _inorderTraversal(Node<T> *node)
+        {
+            if (!node)
+                return;
             _inorderTraversal(node->left);
             cout << node->m_data << " ";
             _inorderTraversal(node->right);
         }
-        
-        void _postorderTraversal(Node<T> *node) {
-            if (!node) return;
+
+        void _postorderTraversal(Node<T> *node)
+        {
+            if (!node)
+                return;
             _postorderTraversal(node->left);
             _postorderTraversal(node->right);
             cout << node->m_data << " ";
@@ -80,6 +88,23 @@ namespace binary_tree
             return node;
         }
 
+        Node<T> *_search_recursive(Node<T> *node, T data)
+        {
+            if (!node)
+                return nullptr;
+
+            if (data == node->m_data)
+            {
+                return node;
+            }
+            else if (_compare(data, node->m_data))
+            {
+                return _search_recursive(node->left, data);
+            }
+            else
+                return _search_recursive(node->right, data);
+        }
+
     public:
         Tree() : _root(nullptr) {}
         ~Tree()
@@ -105,35 +130,48 @@ namespace binary_tree
             cout << endl;
         }
 
-        void dsfInorder() override {
+        void dsfInorder() override
+        {
             _inorderTraversal(_root);
             cout << endl;
         }
 
-        void dsfPostorder() override {
+        void dsfPostorder() override
+        {
             _postorderTraversal(_root);
             cout << endl;
         }
 
-        void bfs() override {
-            if (!_root) return;
+        void bfs() override
+        {
+            if (!_root)
+                return;
 
-            queue<Node<T>*> q;
+            queue<Node<T> *> q;
             q.push(_root);
 
-            while (!q.empty()) {
-                Node<T> * current = q.front();
+            while (!q.empty())
+            {
+                Node<T> *current = q.front();
                 q.pop();
                 cout << current->m_data << " ";
 
-                if (current->left) q.push(current->left);
-                if (current->right) q.push(current->right);
+                if (current->left)
+                    q.push(current->left);
+                if (current->right)
+                    q.push(current->right);
             }
 
             cout << endl;
         }
 
-        void exportToDot(ostream& out) override {
+        Node<T> *search(const T data) override
+        {
+            return _search_recursive(_root, data);
+        }
+
+        void exportToDot(ostream &out) override
+        {
             out << "digraph BinaryTree {\n";
             _exportDotRecursive(_root, out);
             out << "}\n";
