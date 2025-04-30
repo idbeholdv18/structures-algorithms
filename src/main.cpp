@@ -129,14 +129,12 @@ int main()
     std::cout << "BFS: ";
     tree.bfs();
 
+
     int treeSearchTarget = 5;
     auto found = tree.search(treeSearchTarget);
-    if (found)
-    {
+    if (found) {
         std::cout << "Found: " << found->m_data << "\n";
-    }
-    else
-    {
+    } else {
         std::cout << "Value: " << treeSearchTarget << "not found.\n";
     }
 
